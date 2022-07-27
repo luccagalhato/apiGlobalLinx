@@ -1,7 +1,7 @@
 package config
 
 import (
-	sqlserver "MANCHESTER/API-GLOBAL-LINX/sqlserver"
+	sqlserver "MANCHESTER/API-GLOBAL-LINX/serversql"
 	"net/http"
 )
 
