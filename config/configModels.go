@@ -1,9 +1,7 @@
 package config
 
 import (
-	"MANCHESTER/TopBrands-app/api/mysql"
-	"MANCHESTER/TopBrands-app/api/sqlserver"
-
+	sqlserver "MANCHESTER/API-GLOBAL-LINX/sqlserver"
 	"net/http"
 )
 
@@ -29,13 +27,11 @@ type SQL struct {
 	Db string `yaml:"db"`
 }
 type linx sqlserver.SQLStr
-type app mysql.SQLStr
 
 //Controller ...
 type Controller struct {
 	//conf config.Config
 	linx *linx
-	app  *app
 
 	server *http.Server
 }

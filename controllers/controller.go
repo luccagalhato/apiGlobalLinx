@@ -3,8 +3,8 @@ package controller
 import (
 	"MANCHESTER/API-GLOBAL-LINX/config"
 	"MANCHESTER/API-GLOBAL-LINX/server"
-	"MANCHESTER/TopBrands-app/api/mysql"
-	"MANCHESTER/TopBrands-app/api/sqlserver"
+	"MANCHESTER/API-GLOBAL-LINX/sqlserver"
+
 	"log"
 	"net/http"
 )
@@ -29,17 +29,16 @@ func NewController(filePath string) (*Controller, error) {
 			firstRead <- err
 			return
 		}
-		a, err := mysql.NewSQL(&conf.App)
-		if err != nil {
-			firstRead <- err
-			return
-		}
-		c.app = (*app)(a)
+		// a, err := mysql.NewSQL(&conf.App)
+		// if err != nil {
+		// 	firstRead <- err
+		// 	return
+		// }
 
-		if err := (*mysql.SQLStr)(c.app).Connect(); err != nil {
-			firstRead <- err
-			return
-		}
+		// if err := (*mysql.SQLStr)(c.app).Connect(); err != nil {
+		// 	firstRead <- err
+		// 	return
+		// }
 
 		c.server = server.NewServer(conf, c.handlers())
 
@@ -49,9 +48,9 @@ func NewController(filePath string) (*Controller, error) {
 			if err := (*sqlserver.SQLStr)(c.linx).UpdateConfig(&conf.Linx); err != nil {
 				log.Fatal(err)
 			}
-			if err := (*mysql.SQLStr)(c.app).UpdateConfig(&conf.App); err != nil {
-				log.Fatal(err)
-			}
+			// if err := (*mysql.SQLStr)(c.app).UpdateConfig(&conf.App); err != nil {
+			// 	log.Fatal(err)
+			// }
 
 			c.server = server.NewServer(conf, c.handlers())
 		}
@@ -74,13 +73,11 @@ func NewController(filePath string) (*Controller, error) {
 type Controller struct {
 	//conf config.Config
 	linx *linx
-	app  *app
 
 	server *http.Server
 }
 
 type linx sqlserver.SQLStr
-type app mysql.SQLStr
 
 //ListenAndServe ...
 func (c *Controller) ListenAndServe() error {

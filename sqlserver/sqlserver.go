@@ -1,7 +1,7 @@
 package sqlserver
 
 import (
-	"MANCHESTER/API-GLOBAL-LINX/config"
+	config "MANCHESTER/API-GLOBAL-LINX/config"
 	"database/sql"
 	"fmt"
 	"net/url"
