@@ -1,7 +1,7 @@
 package server
 
 import (
-	"MANCHESTER/API-GLOBAL-LINX/config"
+	config "MANCHESTER/API-GLOBAL-LINX/config"
 	"fmt"
 	"net/http"
 	"time"

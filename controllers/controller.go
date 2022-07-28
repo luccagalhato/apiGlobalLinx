@@ -3,7 +3,7 @@ package controller
 import (
 	"MANCHESTER/API-GLOBAL-LINX/config"
 	"MANCHESTER/API-GLOBAL-LINX/server"
-	"MANCHESTER/API-GLOBAL-LINX/sqlserver"
+	sqlserver "MANCHESTER/API-GLOBAL-LINX/serversql"
 
 	"log"
 	"net/http"
